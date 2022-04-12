@@ -10,7 +10,7 @@ go build
 
 ## Usage
 
-To rename ./test/test 01.mp4 to ./test/hello 01.mp4
+To rename `./test/test 01.mp4` to `./test/hello 01.mp4`
 
 ```
 regexp-rename -dir ./test \
