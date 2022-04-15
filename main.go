@@ -44,7 +44,7 @@ func main() {
 				log.Print(old_name, " -> ", new_name)
 			}
 
-			if !(*dry_run) || is_skip {
+			if !(*dry_run) && !is_skip {
 				err := os.Rename(
 					filepath.Join(dir_abs, old_name),
 					filepath.Join(dir_abs, new_name))
