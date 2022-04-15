@@ -12,6 +12,7 @@ import (
 func main() {
 	// define arguements
 	dir := flag.String("dir", ".", "directory")
+	mode := flag.Int("mode", 0, "File (0) or directory (1)")
 	expr := flag.String("expr", "^$", "Regular expression to extract data")
 	name_template := flag.String("name-template", "", "Name template")
 	dry_run := flag.Bool("dry-run", false, "Dry run only")
@@ -31,7 +32,7 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, file := range files {
-		if !file.IsDir() {
+		if file.IsDir() && (*mode == 1) {
 			var re = regexp.MustCompile(*expr)
 
 			old_name := file.Name()
