@@ -26,13 +26,15 @@ func main() {
 
 	log.Println("Work dir:", dir_abs)
 
-	// loop through dir
+	// loop through items in a directory
 	files, err := ioutil.ReadDir(dir_abs)
 	if err != nil {
 		log.Fatal(err)
 	}
 	for _, file := range files {
-		if file.IsDir() && (*mode == 1) {
+		doRun := (file.IsDir() && (*mode == 1)) || (!file.IsDir() && (*mode == 0))
+		if doRun {
+			// If a dir and in dir mode or a file and in file mode, then
 			var re = regexp.MustCompile(*expr)
 
 			old_name := file.Name()
