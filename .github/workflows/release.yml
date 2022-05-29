@@ -63,16 +63,4 @@ jobs:
         GOARM: "7"
         GOOS: linux
         EXTRA_FILES: "LICENSE"
-  release-linux-arm8:
-    name: release linux/arm8
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GOARCH: "arm"
-        GOARM: "8"
-        GOOS: linux
-        EXTRA_FILES: "LICENSE"
+
