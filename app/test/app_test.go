@@ -4,6 +4,7 @@ import (
 	"path"
 	"testing"
 
+	"github.com/fjctp/regexp-rename/app"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -17,12 +18,12 @@ func TestApp1(t *testing.T) {
 	name_template := `\${1}.mp4`
 	dry_run := true
 
-	args := NewAppArgs(dir,
+	args := app.NewAppArgs(dir,
 		mode,
 		expr,
 		name_template,
 		dry_run)
-	Run(args)
+	app.Run(args)
 
 	assert.DirExists(t, test_dirs[0])
 	assert.DirExists(t, test_dirs[1])
@@ -42,12 +43,12 @@ func TestApp2(t *testing.T) {
 	name_template := `${1}`
 	dry_run := true
 
-	args := NewAppArgs(dir,
+	args := app.NewAppArgs(dir,
 		mode,
 		expr,
 		name_template,
 		dry_run)
-	Run(args)
+	app.Run(args)
 
 	assert.DirExists(t, test_dirs[0])
 	assert.DirExists(t, test_dirs[1])
@@ -67,12 +68,12 @@ func TestApp3(t *testing.T) {
 	name_template := `${1}.mp4`
 	dry_run := false
 
-	args := NewAppArgs(dir,
+	args := app.NewAppArgs(dir,
 		mode,
 		expr,
 		name_template,
 		dry_run)
-	Run(args)
+	app.Run(args)
 
 	assert.DirExists(t, test_dirs[0])
 	assert.DirExists(t, test_dirs[1])
@@ -94,12 +95,12 @@ func TestApp4(t *testing.T) {
 	name_template := `${1}`
 	dry_run := false
 
-	args := NewAppArgs(dir,
+	args := app.NewAppArgs(dir,
 		mode,
 		expr,
 		name_template,
 		dry_run)
-	Run(args)
+	app.Run(args)
 
 	assert.NoDirExists(t, test_dirs[0])
 	assert.NoDirExists(t, test_dirs[1])
