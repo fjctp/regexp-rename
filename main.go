@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+
+	"github.com/fjctp/regexp-rename/app"
 )
 
 func main() {
@@ -13,5 +15,7 @@ func main() {
 	dry_run := flag.Bool("dry-run", false, "Dry run only")
 	flag.Parse()
 
-	app(*dir, *mode, *expr, *name_template, *dry_run)
+	args := app.NewAppArgs(*dir, *mode, *expr, *name_template, *dry_run)
+
+	app.Run(args)
 }
